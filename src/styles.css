@@ -1,3 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
 
+@theme {
+  /* --breakpoint-xs: is a very little device 30rem;  the breakpoint-sm is in 40rem by default */
+  --breakpoint-xs: 30rem;
+}
