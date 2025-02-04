@@ -38,6 +38,8 @@ export class ChatComponent implements AfterViewChecked {
 
   showHeader = signal(false);
 
+  threadId!: any;
+
   constructor(
     // private chatService: ChatService,
     private http: HttpClient,
@@ -67,7 +69,7 @@ export class ChatComponent implements AfterViewChecked {
   }
 
 
-  sendMessage() {
+  sendMessage_old() {
     if (this.userMessage.trim() === "") return;
 
     this.loadingResponse = true;
@@ -110,7 +112,46 @@ export class ChatComponent implements AfterViewChecked {
     setTimeout(() => {
       this.userMessage = "";
     }, 100);
+  };
+
+  sendMessage() {
+    if (this.userMessage.trim() === "") return;
+
+    this.loadingResponse = true;
+    this.chatMessages.push({ message: this.userMessage });
+
+    const responseMessage = {
+      role: "assistant",
+      content: "…",
+    };
+    this.chatMessages.push(responseMessage);
+
+    // Enviar el mensaje al backend de FastAPI
+    this.http
+      .post<{ thread_id: string; response: string }>(
+        "http://localhost:3000/chat_a", // Asegúrate de que la URL coincide con la del backend FastAPI
+        {
+          message: this.userMessage,
+          thread_id: this.threadId || null, // Si hay un thread_id previo, se reutiliza
+        }
+      )
+      .subscribe({
+        next: (data) => {
+          this.threadId = data.thread_id; // Guardar el thread_id para futuras interacciones
+          responseMessage.content = data.response;
+          this.loadingResponse = false;
+        },
+        error: () => {
+          this.loadingResponse = false;
+        },
+      });
+
+    this.userMessage = "";
+    setTimeout(() => {
+      this.userMessage = "";
+    }, 100);
   }
+
 
   scrollToBottom(): void {
     if (!this.userScrolled && this.messagesContainer) {
