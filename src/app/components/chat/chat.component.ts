@@ -136,20 +136,5 @@ export class ChatComponent implements AfterViewChecked {
     console.log(textarea.style.height);
   }
 
-  // pressEnter(event: any) {
-  //   if (!event.shiftKey) { // Evita el salto de línea al presionar solo "Enter"
-  //     event.preventDefault(); // Previene el salto de línea
-  //     console.log('Mensaje enviado:', this.userMessage); // Aquí iría la lógica para enviar el mensaje
-  //     this.userMessage = ''; // Limpia el campo después de enviar
-  //   }
-  // }
-
-  // adjustHeight(textarea: HTMLTextAreaElement, event: KeyboardEvent) {
-  //   if (event.key === 'Enter') {
-  //     textarea.style.height = 'auto'; // Reinicia la altura para reducir si es necesario
-  //     textarea.style.height = `${textarea.scrollHeight + 12}px`; // Ajusta la altura al contenido
-  //   }
-  // }
-
 
 }
