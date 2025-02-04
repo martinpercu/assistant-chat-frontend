@@ -49,8 +49,8 @@
         </div>
       </div>
 
-      <!-- <div [ngClass]="showArrowDown ? 'arrow-show' : 'arrow-not-show'"> -->
-      <div class="arrow-show">
+      <div [ngClass]="showArrowDown ? 'arrow-show' : 'arrow-not-show'">
+      <!-- <div class="arrow-show"> -->
         <div (click)="scrollToBottomFromArrow()"
           class="cursor-pointer absolute bottom-[90px] z-10 rounded-full bg-amber-200 border text-token-text-secondary border-token-border-light right-1/2 translate-x-1/2 bg-token-main-surface-primary w-8 h-8 flex items-center justify-center">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -88,9 +88,9 @@
       </div> -->
 
       <!-- <div class=" bg-red-400"> -->
-      <div class="flex flex-row p-4 gap-4 sm:w-10/12 m-auto bg-green-300 rounded-md shadow-lg mb-4 ">
+      <div class="flex flex-row p-4 gap-4 sm:w-10/12 m-auto bg-gray-50 rounded-md shadow-md mb-4 ">
         <textarea #chatInput [(ngModel)]="userMessage"
-          class="grow py-3 px-5 ring-0 bg-transparent resize-none overflow-hidden focus:outline-none focus:ring-0 focus:border-none appearance-none"
+          class="grow py-3 px-3 ring-0 bg-transparent resize-none overflow-hidden focus:outline-none focus:ring-0 focus:border-none appearance-none"
           rows="1" placeholder="Type a message..." (input)="adjustHeight(chatInput)" (keydown.enter)="sendMessage()">
         </textarea>
         <!-- <input class="grow py-3 px-5 ring-0 bg-transparent" type="text" [(ngModel)]="userMessage"

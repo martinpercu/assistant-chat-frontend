@@ -82,6 +82,8 @@ export class ChatComponent implements AfterViewChecked {
     console.log(responseMessage);
     console.log(this.chatMessages);
     console.log(this.userMessage);
+    this.userMessage = "";
+
 
     this.http
       .post("http://localhost:3000/chatwip", { message: this.userMessage }, {
@@ -107,7 +109,7 @@ export class ChatComponent implements AfterViewChecked {
     this.userMessage = "";
     setTimeout(() => {
       this.userMessage = "";
-    }, 10);
+    }, 100);
   }
 
   scrollToBottom(): void {
