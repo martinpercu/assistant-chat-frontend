@@ -90,7 +90,7 @@
       <!-- <div class=" bg-red-400"> -->
       <div class="flex flex-row p-4 gap-4 sm:w-10/12 m-auto bg-green-300 rounded-md shadow-lg mb-4 ">
         <textarea #chatInput [(ngModel)]="userMessage"
-          class="grow py-3 px-5 ring-0 bg-transparent resize-none overflow-hidden focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="grow py-3 px-5 ring-0 bg-transparent resize-none overflow-hidden focus:outline-none focus:ring-0 focus:border-none appearance-none"
           rows="1" placeholder="Type a message..." (input)="adjustHeight(chatInput)" (keydown.enter)="sendMessage()">
         </textarea>
         <!-- <input class="grow py-3 px-5 ring-0 bg-transparent" type="text" [(ngModel)]="userMessage"

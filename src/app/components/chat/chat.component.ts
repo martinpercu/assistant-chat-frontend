@@ -105,6 +105,9 @@ export class ChatComponent implements AfterViewChecked {
         },
       });
     this.userMessage = "";
+    setTimeout(() => {
+      this.userMessage = "";
+    }, 10);
   }
 
   scrollToBottom(): void {
@@ -129,17 +132,15 @@ export class ChatComponent implements AfterViewChecked {
     console.log(textarea.style.height);
     textarea.style.height = 'auto'; // Reinicia la altura para reducir si es necesario
     console.log(textarea.style.height);
-    textarea.style.height = `${textarea.scrollHeight}px`; // Ajusta la altura al contenido
-    console.log(textarea.style.height);
   }
 
-  pressEnter(event: any) {
-    if (!event.shiftKey) { // Evita el salto de línea al presionar solo "Enter"
-      event.preventDefault(); // Previene el salto de línea
-      console.log('Mensaje enviado:', this.userMessage); // Aquí iría la lógica para enviar el mensaje
-      this.userMessage = ''; // Limpia el campo después de enviar
-    }
-  }
+  // pressEnter(event: any) {
+  //   if (!event.shiftKey) { // Evita el salto de línea al presionar solo "Enter"
+  //     event.preventDefault(); // Previene el salto de línea
+  //     console.log('Mensaje enviado:', this.userMessage); // Aquí iría la lógica para enviar el mensaje
+  //     this.userMessage = ''; // Limpia el campo después de enviar
+  //   }
+  // }
 
   // adjustHeight(textarea: HTMLTextAreaElement, event: KeyboardEvent) {
   //   if (event.key === 'Enter') {

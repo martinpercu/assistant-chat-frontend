@@ -34,6 +34,12 @@ textarea {
   transition: height 0.2s ease-in-out;
 }
 
+textarea {
+  min-height: 0; /* Asegura que no haya una altura mínima */
+  height: auto;
+}
+
+
 
 /* .input {
   flex-grow: 1;
