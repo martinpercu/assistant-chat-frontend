@@ -1,4 +1,4 @@
-import { Component, inject, ViewChild, ElementRef, AfterViewInit, AfterViewChecked, Renderer2 } from '@angular/core';
+import { Component, signal, inject, ViewChild, ElementRef, AfterViewInit, AfterViewChecked, Renderer2 } from '@angular/core';
 
 
 import { CommonModule } from '@angular/common';
@@ -9,12 +9,14 @@ import { HttpClientModule, HttpDownloadProgressEvent, HttpEvent, HttpEventType }
 import { ChatMessage } from '@models/chatMessage';
 import { HttpClient } from '@angular/common/http';
 
+import { HeaderComponent } from '@components/header/header.component';
+import { DropdowntitleComponent } from '@components/dropdowntitle/dropdowntitle.component'
 
 
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, HeaderComponent, DropdowntitleComponent],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css'
 })
@@ -34,6 +36,7 @@ export class ChatComponent implements AfterViewChecked {
   showArrowDown: boolean = false;
   userScrolled: boolean = false; // Nueva bandera para controlar el scroll manual
 
+  showHeader = signal(false);
 
   constructor(
     // private chatService: ChatService,
@@ -117,6 +120,33 @@ export class ChatComponent implements AfterViewChecked {
     container.scrollTop = container.scrollHeight;
   }
 
+  toggleShowHeader() {
+    this.showHeader.update(prevState => !prevState)
+  }
+
+
+  adjustHeight(textarea: HTMLTextAreaElement) {
+    console.log(textarea.style.height);
+    textarea.style.height = 'auto'; // Reinicia la altura para reducir si es necesario
+    console.log(textarea.style.height);
+    textarea.style.height = `${textarea.scrollHeight}px`; // Ajusta la altura al contenido
+    console.log(textarea.style.height);
+  }
+
+  pressEnter(event: any) {
+    if (!event.shiftKey) { // Evita el salto de línea al presionar solo "Enter"
+      event.preventDefault(); // Previene el salto de línea
+      console.log('Mensaje enviado:', this.userMessage); // Aquí iría la lógica para enviar el mensaje
+      this.userMessage = ''; // Limpia el campo después de enviar
+    }
+  }
+
+  // adjustHeight(textarea: HTMLTextAreaElement, event: KeyboardEvent) {
+  //   if (event.key === 'Enter') {
+  //     textarea.style.height = 'auto'; // Reinicia la altura para reducir si es necesario
+  //     textarea.style.height = `${textarea.scrollHeight + 12}px`; // Ajusta la altura al contenido
+  //   }
+  // }
 
 
 }

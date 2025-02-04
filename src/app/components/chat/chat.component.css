@@ -2,7 +2,7 @@
 /* Me hinche las bolas */
 
 .assistant-message {
-  background-color: var(--color-gray-100);
+  background-color: lightgray;
   align-self: flex-start;
   max-width: 80%;
   color: black;
@@ -30,8 +30,12 @@
   text-align: center;
 }
 
+textarea {
+  transition: height 0.2s ease-in-out;
+}
 
-.input {
+
+/* .input {
   flex-grow: 1;
   padding: 16px 24px;
   margin-right: 10px;
@@ -39,7 +43,7 @@
   border: 2px solid transparent;
   font-size: 1em;
   background-color: #efefef;
-}
+} */
 
 
 /* .page_main {
