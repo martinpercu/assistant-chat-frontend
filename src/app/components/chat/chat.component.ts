@@ -1,4 +1,4 @@
-import { Component, signal, inject, ViewChild, ElementRef, AfterViewInit, AfterViewChecked, Renderer2 } from '@angular/core';
+import { Component, signal, inject, ViewChild, ElementRef, AfterViewChecked, Renderer2 } from '@angular/core';
 
 
 import { CommonModule } from '@angular/common';
@@ -627,7 +627,7 @@ export class ChatComponent implements AfterViewChecked {
     let processedLength = 0;
 
     this.http
-      .post("http://localhost:3000/chat_a_stream_last", formData, {
+      .post("https://fastapi-chat-5ewd.onrender.com/chat_a_stream_last", formData, {
         responseType: 'text',       // La respuesta es texto
         observe: 'events',          // Se observan los eventos de la respuesta
         reportProgress: true,       // Se permite el seguimiento del progreso
@@ -695,10 +695,20 @@ export class ChatComponent implements AfterViewChecked {
 
 
   adjustHeight(textarea: HTMLTextAreaElement) {
-    console.log(textarea.style.height);
     textarea.style.height = 'auto'; // Reinicia la altura para reducir si es necesario
-    console.log(textarea.style.height);
   }
 
+
+  testApi() {
+    this.http.get('https://fastapi-chat-5ewd.onrender.com')
+      .subscribe({
+        next: (response) => {
+          console.log('Respuesta del GET:', response);
+        },
+        error: (error) => {
+          console.error('Error en la solicitud GET:', error);
+        },
+      });
+  }
 
 }
