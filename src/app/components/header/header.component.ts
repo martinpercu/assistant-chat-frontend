@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+
+import { AssistantselectorService } from '@services/assistantselector.service';
+
 
 @Component({
   selector: 'app-header',
@@ -8,5 +11,15 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+  private assistSelector = inject(AssistantselectorService);
+
+
+  setAssistant(assistId: string) {
+    console.log('in header assisID  ', assistId);
+
+    this.assistSelector.setAssistantId(assistId);
+
+  }
+
 
 }
