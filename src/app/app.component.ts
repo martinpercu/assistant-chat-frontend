@@ -14,24 +14,37 @@ export class AppComponent implements OnInit {
   title = 'Assistant 4 All';
 
   authService = inject(AuthService);
+  // isDarkMode = false;
 
   ngOnInit(): void {
-      this.authService.user$.subscribe((user) => {
-        if (user) {
-          this.authService.currentUserSig.set({
-            email: user.email!,
-            username: user.displayName!
-          });
-        } else {
-          this.authService.currentUserSig.set(null);
-        }
-        console.log(this.authService.currentUserSig());
+    this.authService.user$.subscribe((user) => {
+      if (user) {
+        this.authService.currentUserSig.set({
+          email: user.email!,
+          username: user.displayName!
+        });
+      } else {
+        this.authService.currentUserSig.set(null);
+      }
+      console.log(this.authService.currentUserSig());
+    });
 
-      });
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
   }
 
-
-
+  // toggleDarkMode() {
+  //   this.isDarkMode = !this.isDarkMode;
+  //   if (this.isDarkMode) {
+  //     document.documentElement.classList.add('dark');
+  //     localStorage.setItem('theme', 'dark');
+  //   } else {
+  //     document.documentElement.classList.remove('dark');
+  //     localStorage.setItem('theme', 'light');
+  //   }
+  // }
 
   // constructor() {
   //   const id = this.authService.getUserUid();

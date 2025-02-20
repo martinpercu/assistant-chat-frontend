@@ -30,19 +30,20 @@ export class AuthService {
       email,
       password,
     ).then((response) => {
-      updateProfile(response.user, { displayName: username })
-      this.addRegisterUsed(email, username)
+      // updateProfile(response.user, { displayName: username })
+      this.addRegisterUsed(email, username, response.user.uid)
     }
     );
     return from(promise);
   };
 
-  addRegisterUsed(email: string, username: string) {
+  addRegisterUsed(email: string, username: string, userUid:any) {
     this.user = {
       email: email,
-      username: username
+      username: username,
+      userUID: userUid
     }
-    this.userService.addUser(this.user)
+    this.userService.addUserWithId(this.user, userUid)
   }
 
   login(email: string, password: string) {
