@@ -14,17 +14,8 @@
 
     <div class="flex h-full w-full flex-col focus-visible:outline-0 min-h-14">
 
-      <div class="hidden w-full md:flex md:flex-row">
-        <div class="grow">
-          <div class="flex flex-grow place-content-center"
-              (click)="testApi()">
-            <app-dropdowntitle></app-dropdowntitle>
-          </div>
-        </div>
-      </div>
-
-      <div class="md:hidden w-full flex flex-row">
-        <div (click)="toggleShowHeader()" class="z-30">
+      <div class="w-full flex flex-row h-16">
+        <div (click)="toggleShowHeader()" class="md:hidden z-30">
           IZQ
         </div>
         <div class="grow">
@@ -32,22 +23,26 @@
             <app-dropdowntitle></app-dropdowntitle>
           </div>
         </div>
-        <div>
+        <div class="md:hidden">
           DER
         </div>
       </div>
 
       <div class="grow p-1 flex flex-col">
 
-        <div #messagesContainer class="grow h-60 overflow-y-auto px-3 flex-col scroll-smooth">
+        <div #messagesContainer class="grow h-60 m-auto w-full sm:w-11/12 md:w-10/12 lg:w-9/12 xl:w-8/12 2xl:w-1/2 overflow-y-auto px-3 flex-col scroll-smooth">
           <div class="flex flex-col" *ngFor="let message of chatMessages">
             <div
-              class="self-end max-w-[80%] rounded-3xl rounded-br-md text-gray-800 dark:text-neutral-200 bg-gray-200 dark:bg-neutral-700 my-2 py-2 px-4 break-words whitespace-pre-wrap"
+              class="self-end max-w-[80%] rounded-3xl rounded-br-md text-gray-800 dark:text-neutral-200 bg-gray-200 dark:bg-neutral-700 mt-3 mb-4 py-2 px-4 break-words whitespace-pre-wrap"
               [ngClass]="{ 'assistant-message': message.role === 'assistant',  'user-message': message.role === 'user' }">
               <div class="text-gray-800 dark:text-gray-200">{{ message.message }}</div>
+
               <div>{{ message.content }}</div>
             </div>
           </div>
+          @if(loadingResponse && !startingResponse){
+            <div>Estoy pensando</div>
+          }
         </div>
 
         <div [ngClass]="showArrowDown ? 'arrow-show' : 'arrow-not-show'">
@@ -89,10 +84,10 @@
         </div> -->
 
         <!-- <div class=" bg-red-400"> -->
-        <div class="flex flex-row p-4 gap-4 sm:w-10/12 m-auto bg-gray-50 dark:bg-neutral-700 rounded-md shadow-md mb-4 border">
+        <div class="flex flex-row p-4 gap-4 w-full sm:w-9/12 max-w-96 sm:max-w-none md:w-8/12 lg:w-7/12 2xl:w-1/2 m-auto bg-gray-50 dark:bg-neutral-700 rounded-md shadow-md mb-4 border">
           <textarea #chatInput [(ngModel)]="userMessage"
             class="grow py-3 px-3 ring-0 bg-transparent resize-none overflow-hidden focus:outline-none focus:ring-0 focus:border-none appearance-none"
-            rows="1" placeholder="Type a message..." (input)="adjustHeight(chatInput)" (keydown.enter)="sendMessage_assistant_stream_last_last()">
+            rows="1" placeholder="Type a message..." (input)="adjustHeight(chatInput)" (keydown.enter)="sendMessage()">
           </textarea>
           <!-- <input class="grow py-3 px-5 ring-0 bg-transparent" type="text" [(ngModel)]="userMessage"
               placeholder="Type a message..." (keyup.enter)="sendMessage()"> -->
