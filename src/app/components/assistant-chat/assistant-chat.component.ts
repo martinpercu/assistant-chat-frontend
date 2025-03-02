@@ -9,7 +9,9 @@ import { ChatMessage } from '@models/chatMessage';
 import { HttpClient } from '@angular/common/http';
 
 import { HeaderComponent } from '@components/header/header.component';
-import { DropdowntitleComponent } from '@components/dropdowntitle/dropdowntitle.component'
+import { DropdowntitleComponent } from '@components/dropdowntitle/dropdowntitle.component';
+import { TopRightComponent } from '@components/top-right/top-right.component';
+import { TopLeftComponent} from '@components/top-left/top-left.component';
 
 import { ChangeDetectorRef } from '@angular/core';
 
@@ -18,7 +20,7 @@ import { AssistantselectorService } from '@services/assistantselector.service';
 @Component({
   selector: 'app-assistant-chat',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule, HeaderComponent, DropdowntitleComponent],
+  imports: [CommonModule, FormsModule, HttpClientModule, HeaderComponent, DropdowntitleComponent, TopRightComponent, TopLeftComponent],
   templateUrl: './assistant-chat.component.html',
   styleUrl: './assistant-chat.component.css'
 })
