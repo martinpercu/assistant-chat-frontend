@@ -41,7 +41,7 @@
 
     </div>
 
-    <div class="text-center italic px-2 text-base text-gray-700 dark:text-gray-400 ">
+    <div class="mt-10 text-center italic px-2 text-base text-gray-700 dark:text-gray-400 ">
       @if(assistant_id() == 'asst_YPuH1T2frcyhAlXJZ0ibz2lg'){
         This is a teacher for children under 12 years old. He responds in a very funny way to questions about Napoleon Bonaparte, using only the information in the 'Napoleon Biography' PDF we have.
       }
@@ -55,32 +55,5 @@
     </div>
 
 
-    <div class="bg-green-200 fixed bottom-0 w-[260px] text-center">
-      @if(authService.currentUserSig() == null) {
-      <div (click)="changeViewRegisterOrLogin()" class="cursor-pointer p-2 font-semibold bg-violet-300">
-        Login or Register
-      </div>
-      <div>
-        @if(this.showRegisterOrLogin) {
-        <div>
-          <app-login></app-login>
-        </div>
-        }
-        @if(!this.showRegisterOrLogin) {
-        <div>
-          <app-register></app-register>
-        </div>
-        }
-      </div>
-      }
-
-      @if(authService.currentUserSig()) {
-      <div>
-        <app-logout></app-logout>
-      </div>
-      }
-
-
-    </div>
   </div>
 </div>

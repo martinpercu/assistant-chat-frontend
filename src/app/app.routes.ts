@@ -7,6 +7,7 @@ import { AssistantChatComponent } from '@components/assistant-chat/assistant-cha
 import { LoginComponent } from '@components/login/login.component';
 import { RegisterComponent } from '@components/register/register.component';
 import { LogoutComponent } from '@components/logout/logout.component';
+import { ModalRegisterLoginComponent } from '@components/modal-register-login/modal-register-login.component';
 
 import { DocsComponent } from '@pages/docs/docs.component'
 
@@ -42,5 +43,9 @@ export const routes: Routes = [
   {
     path:'logout',
     component: LogoutComponent
+  },
+  {
+    path:'modal',
+    component: ModalRegisterLoginComponent
   }
 ];
