@@ -17,12 +17,12 @@ export class DocsComponent {
       docname: 'napoleon'
     },
     {
-      name: 'US Presidents Conclusion',
-      docname: 'presi-conclu'
-    },
-    {
       name: 'US Presidents',
       docname: 'presi'
+    },
+    {
+      name: 'US Presidents Conclusion',
+      docname: 'presi-conclu'
     },
     {
       name: 'Lisa History',

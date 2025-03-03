@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
-import {MatIconModule} from '@angular/material/icon';
+import { Component, inject, signal } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+
+import { LightdarkthemeService } from '@services/lightdarktheme.service';
+import { AuthService } from '@services/auth.service';
 
 @Component({
   selector: 'app-top-right',
@@ -10,10 +13,21 @@ import {MatIconModule} from '@angular/material/icon';
 })
 export class TopRightComponent {
 
+  themeService = inject(LightdarkthemeService);
+  authService = inject(AuthService);
+
   showlist: boolean = false
 
-  switchShowList(){
+  switchShowList() {
     this.showlist = !this.showlist
+  }
+
+  goToLink(url: string) {
+    window.open(url, "_blank");
+  }
+
+  changeTheme(){
+    this.themeService.toggleDarkMode();
   }
 
 }
