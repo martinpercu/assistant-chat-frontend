@@ -30,7 +30,7 @@ export class AuthService {
       email,
       password,
     ).then((response) => {
-      // updateProfile(response.user, { displayName: username })
+      updateProfile(response.user, { displayName: username })
       this.addRegisterUsed(email, username, response.user.uid)
     }
     );
