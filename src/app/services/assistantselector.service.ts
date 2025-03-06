@@ -5,7 +5,7 @@ import { Injectable, signal } from '@angular/core';
 })
 export class AssistantselectorService {
 
-  assistant_id = signal('');
+  assistant_id = signal('asst_YPuH1T2frcyhAlXJZ0ibz2lg');
 
   setAssistantId(assistId: any) {
     console.log('the idReseived =  ', assistId);

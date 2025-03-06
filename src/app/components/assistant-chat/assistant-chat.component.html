@@ -41,7 +41,7 @@
             </div>
           </div>
           @if(loadingResponse && !startingResponse){
-            <div>Estoy pensando</div>
+            <div class="pl-6 dark:text-gray-300 text-gray-700">Estoy pensando</div>
           }
         </div>
 
@@ -57,31 +57,6 @@
             </svg>
           </div>
         </div>
-
-
-        <!-- <div class="w-full">
-          <div
-            class="flex w-full cursor-text flex-col rounded-3xl border border-token-border-light px-3 py-1 shadow-[0_9px_9px_0px_rgba(0,0,0,0.01),_0_2px_5px_0px_rgba(0,0,0,0.06)] transition-colors contain-inline-size dark:border-none dark:shadow-none bg-main-surface-primary dark:bg-[#303030]">
-            <div class="flex min-h-[44px] items-start pl-1">
-              <div class="min-w-0 max-w-full flex-1">
-                <div
-                  class="block h-10 w-full resize-none border-0 bg-transparent px-0 py-2 text-token-text-primary placeholder:text-token-text-secondary">
-                  <div class="flex flex-row p-0 gap-4">
-                    <input class="grow py-3 px-5 font-bold ring-0 bg-gray-100 rounded-full" type="text"
-                      [(ngModel)]="userMessage" placeholder="Type a message..." (keyup.enter)="sendMessage()">
-                    <div class="py-3 px-6 bg-black text-white font-bold self-center rounded-full" (click)="sendMessage()">
-                      Send
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="mb-2 mt-1 flex items-center justify-between sm:mt-5">
-              <div class="flex gap-x-1.5 text-token-text-primary">
-              </div>
-            </div>
-          </div>
-        </div> -->
 
         <div class="flex flex-row p-4 mt-4 gap-4 w-full sm:w-9/12 max-w-96 sm:max-w-none md:w-8/12 lg:w-7/12 2xl:w-1/2 m-auto bg-gray-50 dark:bg-neutral-700 rounded-md shadow-md mb-4 border">
           <textarea #chatInput [(ngModel)]="userMessage"
