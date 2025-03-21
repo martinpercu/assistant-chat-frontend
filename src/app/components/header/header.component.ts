@@ -25,9 +25,22 @@ export class HeaderComponent {
 
   assistant_id = this.assistSelector.assistant_id;
 
-  setAssistant(assistId: string) {
-    console.log('in header assisID  ', assistId);
-    this.assistSelector.setAssistantId(assistId);
+  setAssistant(assistName: string) {
+    this.assistSelector.setAssistantId(assistName)
+    // if (assistName == 'Napoleon') {
+    //   console.log('in header assisID  ', assistName);
+    //   this.assistSelector.setAssistantId('asst_YPuH1T2frcyhAlXJZ0ibz2lg');
+    // }
+    // if (assistName == 'President') {
+    //   console.log('in header assisID  ', assistName);
+    //   this.assistSelector.setAssistantId('asst_L0n8MIqjkbPJpgvqpEKUt1Hw');
+    // }
+    // if (assistName == 'Lisa') {
+    //   console.log('in header assisID  ', assistName);
+    //   this.assistSelector.setAssistantId('asst_l5hYAePrPlv2IenUeAcH9tWE');
+    // }else {
+    //   console.log('ALTO QUILOMBO');
+    // }
   }
 
   changeViewRegisterOrLogin() {

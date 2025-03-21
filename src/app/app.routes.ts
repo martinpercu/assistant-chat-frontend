@@ -12,6 +12,7 @@ import { ModalRegisterLoginComponent } from '@components/modal-register-login/mo
 import { DocsComponent } from '@pages/docs/docs.component';
 
 import { ChatoComponent } from '@components/chato/chato.component';
+import { AgentComponent } from '@components/agent/agent.component';
 
 
 export const routes: Routes = [
@@ -54,5 +55,9 @@ export const routes: Routes = [
   {
     path:'chato',
     component: ChatoComponent
+  },
+  {
+    path:'agent',
+    component: AgentComponent
   },
 ];
