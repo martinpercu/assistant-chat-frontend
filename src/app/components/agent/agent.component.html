@@ -30,8 +30,8 @@
     <div class="grow p-1 flex flex-col">
 
       <div #messagesContainer
-        class="grow h-60 m-auto w-full sm:w-11/12 md:w-10/12 lg:w-9/12 xl:w-8/12 2xl:w-1/2 overflow-y-auto px-3 flex-col scroll-smooth">
-        <div class="flex flex-col" *ngFor="let message of chatMessages">
+        class="grow h-60 m-auto w-full overflow-y-auto px-3 scroll-smooth">
+        <div class="flex flex-col sm:w-11/12 md:w-10/12 lg:w-9/12 xl:w-8/122 xl:w-1/2 m-auto" *ngFor="let message of chatMessages">
 
           <!-- <div class="max-w-[80%] rounded-3xl mt-3 mb-4 py-2 px-4 break-words whitespace-pre-wrap"
             [ngClass]="{ 'assistant-message': message.role === 'assistant', 'user-message': message.role === 'user' }">
@@ -46,9 +46,13 @@
 
             <div>{{ message.content }}</div>
           </div>
+
         </div>
+
         @if(loadingResponse && !startingResponse){
-        <div class="pl-6 dark:text-gray-300 text-gray-700">Understanding the query</div>
+          <div class="relative top-[-14px] sm:w-11/12 md:w-10/12 lg:w-9/12 xl:w-8/122 xl:w-1/2 m-auto">
+            <app-message-waiting></app-message-waiting>
+          </div>
         }
       </div>
 

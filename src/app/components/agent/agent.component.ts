@@ -14,6 +14,7 @@ import { HeaderComponent } from '@components/header/header.component';
 import { DropdowntitleComponent } from '@components/dropdowntitle/dropdowntitle.component';
 import { TopRightComponent } from '@components/top-right/top-right.component';
 import { TopLeftComponent } from '@components/top-left/top-left.component';
+import { MessageWaitingComponent } from '@components/message-waiting/message-waiting.component';
 
 // import { ChangeDetectorRef } from '@angular/core';
 
@@ -24,7 +25,7 @@ import { AuthService } from '@services/auth.service';
 @Component({
   selector: 'app-agent',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule, HeaderComponent, DropdowntitleComponent, TopRightComponent, TopLeftComponent, MatIconModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, HeaderComponent, DropdowntitleComponent, TopRightComponent, TopLeftComponent, MatIconModule, MessageWaitingComponent],
   templateUrl: './agent.component.html',
   styleUrl: './agent.component.css'
 })
