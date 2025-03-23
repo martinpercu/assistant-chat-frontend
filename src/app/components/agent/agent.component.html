@@ -1,5 +1,11 @@
 <div class="bg-gray-50 dark:bg-neutral-800 relative h-[100dvh] w-full overflow-auto transition-width">
 
+<!--
+  @if(showStayTune == true) {
+    <app-modal-info (showStayTuned)="fromModalInfo($event)"> </app-modal-info>
+    } -->
+
+
   @if(showHeader()) {
   <div class="z-20 absolute w-full">
     <div class="flex flex-row">
@@ -23,7 +29,7 @@
         </div>
       </div>
       <div class="">
-        <app-top-right></app-top-right>
+        <app-top-right (showModalHandler)="fromTopRight($event)"></app-top-right>
       </div>
     </div>
 

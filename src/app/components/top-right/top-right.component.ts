@@ -1,11 +1,13 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, EventEmitter, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
 import { LightdarkthemeService } from '@services/lightdarktheme.service';
 import { AuthService } from '@services/auth.service';
+import { ModalinfoService } from '@services/modalinfo.service'
 
 import { RegisterComponent } from '@components/register/register.component';
 import { LoginComponent } from '@components/login/login.component';
+
 
 @Component({
   selector: 'app-top-right',
@@ -18,12 +20,11 @@ export class TopRightComponent {
 
   themeService = inject(LightdarkthemeService);
   authService = inject(AuthService);
+  modalinfoService = inject(ModalinfoService);
 
   showlist: boolean = false;
   // showRegisterOrLogin: boolean = false;
   showRegisterOrLogin = signal<boolean | undefined>(undefined);
-
-
 
   switchShowList() {
     this.showlist = !this.showlist
@@ -57,6 +58,10 @@ export class TopRightComponent {
     } else {
       console.log('naranja');
     }
+  }
+
+  showModalInfo() {
+    this.modalinfoService.showModalInfo.set(true);
   }
 
 }

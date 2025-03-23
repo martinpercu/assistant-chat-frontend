@@ -1,0 +1,57 @@
+<div (click)="closeModal()" class="z-50 absolute flex flex-col w-screen h-full bg-gray-700 bg-opacity-95">
+
+
+  <div (click)="$event.stopPropagation()"
+    class="m-auto max-w-[90%]  sm:max-w-screen-sm md:max-w-screen-md py-4 px-1 sm:p-10 bg-gray-100 border border-gray-200 rounded-2xl shadow">
+
+    <div class="flex flex-col items-center text-center text-xs sm:text-sm">
+      <div class="mb-1 sm:mb-4 px-4 text-base sm:text-xl font-medium text-brand">How this works</div>
+      <!-- <div class="text-sm text-gray-500">STAY TUNED!</div> -->
+
+      <div class="pt-4 w-11/12">
+        Our chat system features three unique AI agents, each with their own personality and area of expertise. You can
+        select an agent from the menu on the left:
+      </div>
+
+      <div class="py-6 px-4 sm:p-8 text-left gap-3 flex flex-col">
+        <div>🤴 Napoleon's Funny Professor – Only answers questions related to the French leader.
+        </div>
+        <div>📜 The Presidential Sage – Only answers questions related to the U.S. presidential history.
+        </div>
+        <div>👩‍🏫 Professor Lisa – A knowledgeable teacher focused solely on Lisa.
+        </div>
+      </div>
+
+      <div class="pb-6 w-11/12">
+        <div class="pb-2">
+          🔍 A Shared Knowledge Base, But Specialized Agents
+        </div>
+        <div class="text-left text-xs">
+
+          All agents use the same vector database built from PDF documents, but each is configured to respond only within their specific area—Napoleon, U.S. presidents, or Lisa. This keeps responses focused and relevant. You can access the original documents anytime via the "Docs" link.
+
+        </div>
+      </div>
+
+      <div class="pb-6 w-11/12">
+        <div class="pb-2">
+          💾 Independent Chat Memory
+        </div>
+        <div class="text-left text-xs">
+          Each agent keeps its own chat history, remembering only what you share with them. For example, you could tell one agent your name is Peter and another that it's Mary, and each will remember it only in their own conversation.
+        </div>
+      </div>
+
+
+      <div (click)="closeModal()" class="flex flex-col gap-2 py-4 sm:pt-10">
+        <div (click)="closeModal()" class="cursor-pointer">
+          🚀 Close, Choose Your Expert & Start Chatting!
+        </div>
+        <!-- <div (click)="closeModal()" class="cursor-pointer">
+          CLOSE
+        </div> -->
+      </div>
+
+    </div>
+  </div>
+</div>

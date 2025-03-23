@@ -14,6 +14,7 @@ import { DocsComponent } from '@pages/docs/docs.component';
 import { ChatoComponent } from '@components/chato/chato.component';
 import { AgentComponent } from '@components/agent/agent.component';
 import { MessageWaitingComponent } from '@components/message-waiting/message-waiting.component';
+import { ModalInfoComponent } from '@components/modal-info/modal-info.component';
 
 
 export const routes: Routes = [
@@ -50,7 +51,7 @@ export const routes: Routes = [
     component: LogoutComponent
   },
   {
-    path:'modal',
+    path:'modalregister',
     component: ModalRegisterLoginComponent
   },
   {
@@ -64,5 +65,9 @@ export const routes: Routes = [
   {
     path:'waiter',
     component: MessageWaitingComponent
+  },
+  {
+    path:'modal',
+    component: ModalInfoComponent
   },
 ];
