@@ -1,0 +1,115 @@
+<p>assistant-chat works!</p>
+<!-- <div class="mt-[15dvh] h-[85dvh] p-1 flex flex-col border border-gray-400 rounded-2xl m-auto"> -->
+  <div class="relative h-[100dvh] w-full overflow-auto transition-width">
+
+    @if(showHeader()) {
+    <div class="z-20 absolute w-full">
+      <div class="flex flex-row">
+        <div>
+          <app-header class="md:hidden"></app-header>
+        </div>
+        <div (click)="toggleShowHeader()" class="bg-gray-200 opacity-25 grow"></div>
+      </div>
+    </div>
+    }
+
+    <div class="flex h-full w-full flex-col focus-visible:outline-0">
+
+      <div class="hidden w-full md:flex md:flex-row">
+        <div class="grow">
+          <div class="flex flex-grow place-content-center"
+              (click)="testApi()">
+            <app-dropdowntitle></app-dropdowntitle>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:hidden w-full flex flex-row">
+        <div (click)="toggleShowHeader()" class="z-30">
+          IZQ
+        </div>
+        <div class="grow">
+          <div class="flex flex-grow place-content-center">
+            <app-dropdowntitle></app-dropdowntitle>
+          </div>
+        </div>
+        <div>
+          DER
+        </div>
+      </div>
+
+      <div class="grow p-1 flex flex-col">
+
+        <div #messagesContainer class="grow h-60 overflow-y-auto px-3 flex-col scroll-smooth">
+          <div class="flex flex-col" *ngFor="let message of chatMessages">
+            <div
+              class="self-end max-w-[80%] rounded-2xl text-white bg-black my-2 py-2 px-4 break-words whitespace-pre-wrap"
+              [ngClass]="{ 'assistant-message': message.role === 'assistant',  'user-message': message.role === 'user' }">
+              <div class="text-gray-200">{{ message.message }}</div>
+              <div>{{ message.content }}</div>
+            </div>
+          </div>
+        </div>
+
+        <div [ngClass]="showArrowDown ? 'arrow-show' : 'arrow-not-show'">
+        <!-- <div class="arrow-show"> -->
+          <div (click)="scrollToBottomFromArrow()"
+            class="cursor-pointer absolute bottom-[90px] z-10 rounded-full bg-amber-200 border text-token-text-secondary border-token-border-light right-1/2 translate-x-1/2 bg-token-main-surface-primary w-8 h-8 flex items-center justify-center">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+              class="icon-md text-token-text-primary">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M12 21C11.7348 21 11.4804 20.8946 11.2929 20.7071L4.29289 13.7071C3.90237 13.3166 3.90237 12.6834 4.29289 12.2929C4.68342 11.9024 5.31658 11.9024 5.70711 12.2929L11 17.5858V4C11 3.44772 11.4477 3 12 3C12.5523 3 13 3.44772 13 4V17.5858L18.2929 12.2929C18.6834 11.9024 19.3166 11.9024 19.7071 12.2929C20.0976 12.6834 20.0976 13.3166 19.7071 13.7071L12.7071 20.7071C12.5196 20.8946 12.2652 21 12 21Z"
+                fill="currentColor"></path>
+            </svg>
+          </div>
+        </div>
+
+
+        <!-- <div class="w-full">
+          <div
+            class="flex w-full cursor-text flex-col rounded-3xl border border-token-border-light px-3 py-1 shadow-[0_9px_9px_0px_rgba(0,0,0,0.01),_0_2px_5px_0px_rgba(0,0,0,0.06)] transition-colors contain-inline-size dark:border-none dark:shadow-none bg-main-surface-primary dark:bg-[#303030]">
+            <div class="flex min-h-[44px] items-start pl-1">
+              <div class="min-w-0 max-w-full flex-1">
+                <div
+                  class="block h-10 w-full resize-none border-0 bg-transparent px-0 py-2 text-token-text-primary placeholder:text-token-text-secondary">
+                  <div class="flex flex-row p-0 gap-4">
+                    <input class="grow py-3 px-5 font-bold ring-0 bg-gray-100 rounded-full" type="text"
+                      [(ngModel)]="userMessage" placeholder="Type a message..." (keyup.enter)="sendMessage()">
+                    <div class="py-3 px-6 bg-black text-white font-bold self-center rounded-full" (click)="sendMessage()">
+                      Send
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-2 mt-1 flex items-center justify-between sm:mt-5">
+              <div class="flex gap-x-1.5 text-token-text-primary">
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- <div class=" bg-red-400"> -->
+        <div class="flex flex-row p-4 gap-4 sm:w-10/12 m-auto bg-gray-50 rounded-md shadow-md mb-4 ">
+          <textarea #chatInput [(ngModel)]="userMessage"
+            class="grow py-3 px-3 ring-0 bg-transparent resize-none overflow-hidden focus:outline-none focus:ring-0 focus:border-none appearance-none"
+            rows="1" placeholder="Type a message..." (input)="adjustHeight(chatInput)" (keydown.enter)="sendMessage_assistant_stream_last_last()">
+          </textarea>
+          <!-- <input class="grow py-3 px-5 ring-0 bg-transparent" type="text" [(ngModel)]="userMessage"
+              placeholder="Type a message..." (keyup.enter)="sendMessage()"> -->
+          <div class="py-3 px-6 bg-black text-white font-bold self-center rounded-full" (click)="sendMessage_assistant_stream_last_last()">
+            Send
+          </div>
+        </div>
+        <!-- </div> -->
+
+        <!-- @if(loadingResponse) {
+        <div class="loading-response">
+          <p>Speaking shshsh...</p>
+        </div>
+        } -->
+
+      </div>
+
+    </div>
+  </div>
