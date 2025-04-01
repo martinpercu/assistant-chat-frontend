@@ -1,4 +1,4 @@
-import { Component, inject, ViewChild, ElementRef, AfterViewInit, AfterViewChecked, Renderer2 } from '@angular/core';
+import { Component, signal, inject, ViewChild, ElementRef, AfterViewInit, AfterViewChecked, Renderer2 } from '@angular/core';
 
 
 import { CommonModule } from '@angular/common';
@@ -9,12 +9,14 @@ import { HttpClientModule, HttpDownloadProgressEvent, HttpEvent, HttpEventType }
 import { ChatMessage } from '@models/chatMessage';
 import { HttpClient } from '@angular/common/http';
 
+import { HeaderComponent } from '@components/header/header.component';
+import { DropdowntitleComponent } from '@components/dropdowntitle/dropdowntitle.component'
 
 
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, HeaderComponent, DropdowntitleComponent],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css'
 })
@@ -34,6 +36,7 @@ export class ChatComponent implements AfterViewChecked {
   showArrowDown: boolean = false;
   userScrolled: boolean = false; // Nueva bandera para controlar el scroll manual
 
+  showHeader = signal(false);
 
   constructor(
     // private chatService: ChatService,
@@ -79,6 +82,8 @@ export class ChatComponent implements AfterViewChecked {
     console.log(responseMessage);
     console.log(this.chatMessages);
     console.log(this.userMessage);
+    this.userMessage = "";
+
 
     this.http
       .post("http://localhost:3000/chatwip", { message: this.userMessage }, {
@@ -102,6 +107,9 @@ export class ChatComponent implements AfterViewChecked {
         },
       });
     this.userMessage = "";
+    setTimeout(() => {
+      this.userMessage = "";
+    }, 100);
   }
 
   scrollToBottom(): void {
@@ -117,6 +125,16 @@ export class ChatComponent implements AfterViewChecked {
     container.scrollTop = container.scrollHeight;
   }
 
+  toggleShowHeader() {
+    this.showHeader.update(prevState => !prevState)
+  }
+
+
+  adjustHeight(textarea: HTMLTextAreaElement) {
+    console.log(textarea.style.height);
+    textarea.style.height = 'auto'; // Reinicia la altura para reducir si es necesario
+    console.log(textarea.style.height);
+  }
 
 
 }

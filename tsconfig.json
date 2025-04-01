@@ -38,7 +38,8 @@
       // "@icons/*": ["./src/*"],
       "@chat/*": ["./src/app/domains/chat/*"],
       "@chat2/*": ["./src/app/domains/chat2/*"],
-      "@chat3/*": ["./src/app/domains/chat3/*"],
+      "@components/*": ["./src/app/components/*"],
+      "@env/*": ["./src/environments/*"],
     }
   },
   "angularCompilerOptions": {
