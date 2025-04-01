@@ -16,7 +16,8 @@
 
     <div class="hidden w-full md:flex md:flex-row">
       <div class="grow">
-        <div class="flex flex-grow place-content-center">
+        <div class="flex flex-grow place-content-center"
+            (click)="testApi()">
           <app-dropdowntitle></app-dropdowntitle>
         </div>
       </div>
@@ -91,11 +92,11 @@
       <div class="flex flex-row p-4 gap-4 sm:w-10/12 m-auto bg-gray-50 rounded-md shadow-md mb-4 ">
         <textarea #chatInput [(ngModel)]="userMessage"
           class="grow py-3 px-3 ring-0 bg-transparent resize-none overflow-hidden focus:outline-none focus:ring-0 focus:border-none appearance-none"
-          rows="1" placeholder="Type a message..." (input)="adjustHeight(chatInput)" (keydown.enter)="sendMessage()">
+          rows="1" placeholder="Type a message..." (input)="adjustHeight(chatInput)" (keydown.enter)="sendMessage_assistant_stream_last_last()">
         </textarea>
         <!-- <input class="grow py-3 px-5 ring-0 bg-transparent" type="text" [(ngModel)]="userMessage"
             placeholder="Type a message..." (keyup.enter)="sendMessage()"> -->
-        <div class="py-3 px-6 bg-black text-white font-bold self-center rounded-full" (click)="sendMessage()">
+        <div class="py-3 px-6 bg-black text-white font-bold self-center rounded-full" (click)="sendMessage_assistant_stream_last_last()">
           Send
         </div>
       </div>
