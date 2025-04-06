@@ -1,0 +1,43 @@
+<div class="absolute right-0 top-0 p-4">
+
+  <div class="flex flex-col">
+
+    <div (click)="switchShowList()" class="cursor-pointer text-right">
+      <mat-icon fontIcon="insert_emoticon" class="scale-150 "></mat-icon>
+    </div>
+
+    @if(showlist) {
+    <div
+      class="w-48 text-sm font-medium text-gray-900 dark:text-whitebg-white border dark:bg-gray-700 rounded-lg shadow-md">
+
+      <div class="px-4 py-4 border-b border-gray-200 dark:border-gray-600">
+        <mat-icon fontIcon="picture_as_pdf" class=""></mat-icon>
+        See Docs
+      </div>
+      <div class="px-4 py-4 border-b border-gray-200 dark:border-gray-600">
+        <mat-icon fontIcon="settings" class=""></mat-icon>
+        Settings
+      </div>
+      <div class="px-4 py-4 border-b border-gray-200 dark:border-gray-600">
+        <mat-icon fontIcon="light_mode" class=""></mat-icon>
+        Dark
+      </div>
+      <div class="px-4 py-4 border-b border-gray-200 dark:border-gray-600">
+        <mat-icon fontIcon="dark_mode" class=""></mat-icon>
+        Light
+      </div>
+      <div class="px-4 py-4 border-b border-gray-200 dark:border-gray-600">
+        <mat-icon fontIcon="login" class=""></mat-icon>
+        Login / Register
+      </div>
+      <div class="px-4 py-4 border-b border-gray-200 dark:border-gray-600">
+        <mat-icon fontIcon="logout" class=""></mat-icon>
+        Logout
+      </div>
+      <div class="px-4 py-4 rounded-b-lg">Download</div>
+
+    </div>
+    }
+  </div>
+
+</div>
