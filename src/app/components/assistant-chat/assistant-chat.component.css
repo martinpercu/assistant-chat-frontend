@@ -2,11 +2,18 @@
 /* Me hinche las bolas */
 
 .assistant-message {
-  background-color: lightgray;
+  background-color: transparent;
   align-self: flex-start;
   max-width: 80%;
-  color: black;
 }
+
+/*
+@media (prefers-color-scheme: dark) {
+  .assistant-message {
+    background: #753;
+    color: white;
+  }
+} */
 
 .user-message {
   background-color: green;
