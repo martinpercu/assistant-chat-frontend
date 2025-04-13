@@ -1,0 +1,49 @@
+<p>modal-register-login works!</p>
+<div (click)="closeModal()" class="z-50 absolute top-0 flex flex-col w-screen h-full bg-gray-700 bg-opacity-95">
+
+
+  <div (click)="$event.stopPropagation()" class="mt-auto mb-auto mx-2 sm:mx-16 md:mx-28 lg:mx-52 py-4 px-1 sm:p-10 bg-gray-100 border border-gray-200 rounded-2xl shadow">
+
+    <div class="flex flex-col items-center px-2">
+
+      <div class="mb-3 px-4 text-base sm:text-xl font-medium text-brand">Shipping Policy</div>
+
+      <div>
+        <app-login></app-login>
+      </div>
+      <div>
+        <app-register></app-register>
+      </div>
+      <div>
+        <app-logout></app-logout>
+      </div>
+      <div class="text-xs text-gray-500 pb-2 sm:pb-4 text-left w-full">State laws require someone 21 years of age or older to order online and to sign
+      for the package at delivery. It is preferable to ship to a business address.</div>
+      <div class="text-xs text-gray-500 pb-2 sm:pb-4 text-left w-full">Please note that Tupungato Wine Company is the importing company for
+        Kohue Wines and will be the responsible party for charging your payment via
+        Stripe’s secure payment platform.</div>
+      <br>
+
+
+
+
+      <div class="text-sm text-gray-500 text-center w-full pb-2">For any questions, please contact us by emailing info&#64;kohuewines.com</div>
+
+        <div class="flex gap-2 py-4 sm:pt-10">
+
+          <div  (click)="closeModal()" class="button">
+            CLOSE
+          </div>
+        </div>
+
+      <!-- <div class="text-sm text-red-600 mb-4">
+        We're sorry. We take seriously our responsability to limit <br>website access to adults of legal drinking age. <br>
+        For more information, please visit <div class="cursor-pointer underline">responsibility.org</div>
+      </div>
+      <div class="text-sm text-gray-500">By entering this website you are agreeing to our terms of
+        use and privacy policy</div> -->
+
+
+    </div>
+  </div>
+</div>
