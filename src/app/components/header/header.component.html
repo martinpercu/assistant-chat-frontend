@@ -2,6 +2,7 @@
 <!-- <div class="z-10 flex-shrink-0 overflow-x-hidden max-md:!w-0"> -->
 <div>
   <div class="h-[100vh] w-[260px] bg-gray-200">
+
     <div class="flex flex-col text-center">
       <div class="text-center" (click)="setAssistant('asst_L0n8MIqjkbPJpgvqpEKUt1Hw')">
         US Presidents
@@ -12,6 +13,34 @@
       <div class="text-center" (click)="setAssistant('asst_bhH3sUoWfxD2RQfy8dOjZ0Kb')">
         Kohue
       </div>
+    </div>
+
+    <div class="bg-green-200 fixed bottom-0 w-[260px] text-center">
+      @if(authService.currentUserSig() == null) {
+        <div (click)="changeViewRegisterOrLogin()" class="cursor-pointer p-2 font-semibold bg-violet-300">
+          Login or Register
+        </div>
+        <div>
+          @if(this.showRegisterOrLogin) {
+            <div>
+              <app-login></app-login>
+            </div>
+          }
+          @if(!this.showRegisterOrLogin) {
+            <div>
+              <app-register></app-register>
+            </div>
+          }
+        </div>
+      }
+
+      @if(authService.currentUserSig()) {
+        <div>
+          <app-logout></app-logout>
+        </div>
+      }
+
+
     </div>
   </div>
 </div>
