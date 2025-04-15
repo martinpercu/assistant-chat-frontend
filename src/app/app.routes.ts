@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
-import { AssistantsComponent } from '@pages/assistants/assistants.component'
+import { AdminComponent } from '@pages/admin/admin.component';
+import { AssistantsComponent } from '@pages/assistants/assistants.component';
 import { ChatComponent } from '@components/chat/chat.component';
 import { AssistantChatComponent } from '@components/assistant-chat/assistant-chat.component'
 
@@ -8,6 +9,10 @@ import { RegisterComponent } from '@components/register/register.component';
 import { LogoutComponent } from '@components/logout/logout.component';
 
 export const routes: Routes = [
+  {
+    path:'admin',
+    component: AdminComponent
+  },
   {
     path:'chat',
     component: ChatComponent

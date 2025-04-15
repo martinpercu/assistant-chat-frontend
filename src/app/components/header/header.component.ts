@@ -8,10 +8,12 @@ import { LogoutComponent } from '@components/logout/logout.component';
 
 import { AuthService } from '@services/auth.service';
 
+import {ButtonThemeComponent } from '@components/button-theme/button-theme.component'
+
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RegisterComponent, LoginComponent, LogoutComponent],
+  imports: [RegisterComponent, LoginComponent, LogoutComponent, ButtonThemeComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })

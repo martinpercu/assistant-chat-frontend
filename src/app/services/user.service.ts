@@ -15,23 +15,10 @@ export class UserService {
 
   constructor() { }
 
-  getUsers(): Observable<User[]> {
-    return collectionData(this.usersCollection, {
-      idField: 'id',
-    }) as Observable<User[]>;
-  }
 
-  // addUser(text: string): Observable<string> {
-  //   const userToCreate = { text, isCompleted: false };
-  //   const promise = addDoc(this.usersCollection, todoToCreate).then(
-  //     (response) => response.id
-  //   );
-  //   return from(promise);
-  // }
-
-  addUser(user: User) {
+  addUserWithId(user: User, userId: any) {
     const usersRef = collection(this.firestore, 'users');
-    return addDoc(usersRef, user)
+    return setDoc(doc(usersRef, userId), user)
   };
 
   deleteUser(user: User) {
@@ -51,20 +38,35 @@ export class UserService {
       })
   };
 
+  // updateUser(
+  //   todoId: string,
+  //   dataToUpdate: { text: string; isCompleted: boolean }
+  // ): Observable<void> {
+  //   const docRef = doc(this.firestore, 'users/' + todoId);
+  //   const promise = setDoc(docRef, dataToUpdate);
+  //   return from(promise);
+  // }
+
+
+  // getUsers(): Observable<User[]> {
+  //   return collectionData(this.usersCollection, {
+  //     idField: 'id',
+  //   }) as Observable<User[]>;
+  // };
+
+  // addUser(text: string): Observable<string> {
+  //   const userToCreate = { text, isCompleted: false };
+  //   const promise = addDoc(this.usersCollection, todoToCreate).then(
+  //     (response) => response.id
+  //   );
+  //   return from(promise);
+  // }
+
   // removeUser(todoId: string): Observable<void> {
   //   const docRef = doc(this.firestore, 'users/' + todoId);
   //   const promise = deleteDoc(docRef);
   //   return from(promise);
   // }
-
-  updateUser(
-    todoId: string,
-    dataToUpdate: { text: string; isCompleted: boolean }
-  ): Observable<void> {
-    const docRef = doc(this.firestore, 'users/' + todoId);
-    const promise = setDoc(docRef, dataToUpdate);
-    return from(promise);
-  }
 
 
 }
