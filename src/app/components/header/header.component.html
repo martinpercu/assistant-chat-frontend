@@ -1,19 +1,19 @@
 <!-- <div class="bg-gray-300 flex flex-row gap-10 w-full"> -->
 <!-- <div class="z-10 flex-shrink-0 overflow-x-hidden max-md:!w-0"> -->
 <div>
-  <div class="h-[100vh] w-[260px] bg-gray-200">
-    <div class="flex flex-col text-center">
-      <app-button-theme></app-button-theme>
-    </div>
+  <div class="h-[100vh] w-[260px] bg-gray-200 dark:bg-neutral-900 border-r border-gray-400">
 
-    <div class="flex flex-col text-center">
-      <div class="text-center" (click)="setAssistant('asst_L0n8MIqjkbPJpgvqpEKUt1Hw')">
+    <div class="flex flex-col text-center pt-10 text-gray-900 dark:text-gray-300">
+      <div class="text-center py-2">
+        <app-button-theme></app-button-theme>
+      </div>
+      <div class="cursor-pointer text-center my-2" (click)="setAssistant('asst_L0n8MIqjkbPJpgvqpEKUt1Hw')">
         US Presidents
       </div>
-      <div class="text-center" (click)="setAssistant('asst_YPuH1T2frcyhAlXJZ0ibz2lg')">
+      <div class="cursor-pointer text-center my-2" (click)="setAssistant('asst_YPuH1T2frcyhAlXJZ0ibz2lg')">
         Napoleon
       </div>
-      <div class="text-center" (click)="setAssistant('asst_bhH3sUoWfxD2RQfy8dOjZ0Kb')">
+      <div class="cursor-pointer text-center my-2" (click)="setAssistant('asst_bhH3sUoWfxD2RQfy8dOjZ0Kb')">
         Kohue
       </div>
     </div>
