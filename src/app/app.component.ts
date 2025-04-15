@@ -33,6 +33,28 @@ export class AppComponent implements OnInit {
 
 
 
+  // constructor() {
+  //   const id = this.authService.getUserUid();
+  //   if (id) {
+  //     this.userId = id
+  //     // console.log('hay parametro', this.userId);
+  //     this.getUser()
+  //   }
+  // };
+
+  // async getUser() {
+  //   const userGetted = await this.clientService.getOneUser(this.userId);
+  //   this.user = userGetted;
+  //   // console.log(this.user);
+  //   this.buildForm();
+  //   if(this.user.stripeCustomerId == 'none') {
+  //     console.log('tiene NONE')
+  //   }
+  //   else {
+  //     this.syncStripeAccount();
+  //   }
+  // };
+
 
 
 }

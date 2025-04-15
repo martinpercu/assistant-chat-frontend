@@ -4,14 +4,19 @@ import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signO
 import { User } from '@models/user';
 import { Observable, from } from 'rxjs';
 
+import { UserService } from '@services/user.service'
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
   firebaseAuth = inject(Auth);
+  userService = inject(UserService)
   user$ = user(this.firebaseAuth);
   currentUserSig = signal<User | null | undefined>(undefined);
+
+  user!: User;
 
   constructor() { }
 
@@ -24,12 +29,21 @@ export class AuthService {
       this.firebaseAuth,
       email,
       password,
-    ).then((response) =>
-      updateProfile(response.user, { displayName: username }),
+    ).then((response) => {
+      updateProfile(response.user, { displayName: username })
+      this.addRegisterUsed(email, username)
+    }
     );
-
     return from(promise);
   };
+
+  addRegisterUsed(email: string, username: string) {
+    this.user = {
+      email: email,
+      username: username
+    }
+    this.userService.addUser(this.user)
+  }
 
   login(email: string, password: string) {
     const promise = signInWithEmailAndPassword(
@@ -44,4 +58,5 @@ export class AuthService {
     const promise = signOut(this.firebaseAuth);
     return from(promise)
   }
+
 }
