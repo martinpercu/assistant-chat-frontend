@@ -162,7 +162,7 @@ export class AssistantChatComponent {
     };
 
 
-    sendMessage() {
+    sendMessage_with_partialText() {
       if (this.userMessage.trim() === "") return;
 
       // Add user message and set loading state
@@ -244,6 +244,91 @@ export class AssistantChatComponent {
         this.userMessage = "";
       }, 100);
     }
+
+
+    sendMessage_with_NO_partialText() {
+      if (this.userMessage.trim() === "") return;
+
+      // Add user message and set loading state
+      this.loadingResponse = true;
+      // Agregar el mensaje del usuario
+      this.chatMessages.push({ message: this.userMessage });
+
+
+      console.log(this.userMessage);
+      console.log(this.chatMessages);
+
+      // Initialize assistant response with ellipsis
+      const responseMessage = {
+        role: "assistant",
+        content: "" // Show ellipsis immediately
+      };
+      this.chatMessages.push(responseMessage);
+
+      // Prepare request data
+      const formData = {
+        message: this.userMessage,
+        thread_id: this.threadId || null, // Si ya existe, se reutiliza
+        assistant_id: this.assistant_id() || null
+      };
+
+      // Send streaming request
+      this.http
+        .post("http://localhost:3000/chat_a_stream_id", formData, {
+          responseType: 'text',       // La respuesta es texto
+          observe: 'events',          // Se observan los eventos de la respuesta
+          reportProgress: true,       // Se permite el seguimiento del progreso
+        })
+        .subscribe({
+          next: (event: HttpEvent<string>) => {
+            if (event.type === HttpEventType.DownloadProgress) {
+              // Get the full text received so far
+              const rawText = (event as HttpDownloadProgressEvent).partialText ?? "";
+
+              // Split into SSE events and process them
+              const sseEvents = rawText.split(/\n\n/).filter(e => e.trim() !== "");
+
+              let fullContent = "";
+              sseEvents.forEach(sseEvent => {
+                // Si es el evento que contiene el thread_id, lo extraemos y guardamos
+                if (sseEvent.startsWith("event: thread_id")) {
+                  const match = sseEvent.match(/data:\s*(.+)/);
+                  if (match && match[1]) {
+                    this.threadId = match[1].trim();
+                  }
+                } else if (sseEvent.startsWith("data:")) {
+                  // Para eventos de datos, extraemos el contenido y lo acumulamos
+                  // Extraemos el contenido del evento
+                  const data = sseEvent.substring("data:".length).trim();
+                  // Aplicamos una expresión regular para eliminar los marcadores de citas
+                  const cleanedData = data.replace(/【\d+:\d+†source】/g, "");
+                  fullContent += cleanedData + " ";
+                }
+              });
+
+              this.startingResponse = true;
+              // Update content with accumulated text plus ellipsis
+              responseMessage.content = fullContent.trim();
+            } else if (event.type === HttpEventType.Response) {
+              // Finalize content by removing ellipsis
+              // responseMessage.content = responseMessage.content.replace(/…$/, "").trim();
+              this.loadingResponse = false;
+              this.startingResponse = false;
+            }
+          },
+          error: () => {
+            this.loadingResponse = false;
+            responseMessage.content = "Error fetching response";
+          }
+        });
+
+      // Clear input
+      this.userMessage = "";
+      setTimeout(() => {
+        this.userMessage = "";
+      }, 100);
+    }
+
 
     scrollToBottom(): void {
       if (!this.userScrolled && this.messagesContainer) {

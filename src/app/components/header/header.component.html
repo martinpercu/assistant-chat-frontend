@@ -3,44 +3,95 @@
 <div>
   <div class="h-[100vh] w-[260px] bg-gray-200 dark:bg-neutral-900 border-r border-gray-400">
 
-    <div class="flex flex-col text-center pt-10 text-gray-900 dark:text-gray-300">
+    <div class="flex flex-col text-center pt-10 text-gray-900 dark:text-gray-300 text-lg">
       <div class="text-center py-2">
         <app-button-theme></app-button-theme>
+      </div>
+      @if(assistant_id() == 'asst_YPuH1T2frcyhAlXJZ0ibz2lg'){
+      <div class="text-center my-2 font-bold">
+        Napoleon
+      </div>
+      }@else(){
+      <div class="cursor-pointer text-center my-2" (click)="setAssistant('asst_YPuH1T2frcyhAlXJZ0ibz2lg')">
+        Napoleon
+      </div>
+      }
+
+      @if(assistant_id() == 'asst_L0n8MIqjkbPJpgvqpEKUt1Hw'){
+      <div class="text-center my-2 font-bold">
+        US Presidents
+      </div>
+      }@else(){
+      <div class="cursor-pointer text-center my-2" (click)="setAssistant('asst_L0n8MIqjkbPJpgvqpEKUt1Hw')">
+        US Presidents
+      </div>
+      }
+
+      @if(assistant_id() == 'asst_l5hYAePrPlv2IenUeAcH9tWE'){
+      <div class="text-center my-2 font-bold">
+        Lisa Story
+      </div>
+      }@else(){
+      <div class="cursor-pointer text-center my-2" (click)="setAssistant('asst_l5hYAePrPlv2IenUeAcH9tWE')">
+        Lisa Story
+      </div>
+      }
+
+
+
+      <!-- <div class="cursor-pointer text-center my-2" (click)="setAssistant('asst_YPuH1T2frcyhAlXJZ0ibz2lg')">
+        Napoleon
       </div>
       <div class="cursor-pointer text-center my-2" (click)="setAssistant('asst_L0n8MIqjkbPJpgvqpEKUt1Hw')">
         US Presidents
       </div>
-      <div class="cursor-pointer text-center my-2" (click)="setAssistant('asst_YPuH1T2frcyhAlXJZ0ibz2lg')">
-        Napoleon
-      </div>
       <div class="cursor-pointer text-center my-2" (click)="setAssistant('asst_l5hYAePrPlv2IenUeAcH9tWE')">
         Lisa Story
-      </div>
+      </div> -->
+
+
     </div>
+
+    <div class="text-center italic px-2 text-base text-gray-700 dark:text-gray-400 ">
+      @if(assistant_id() == 'asst_YPuH1T2frcyhAlXJZ0ibz2lg'){
+        This is a teacher for children under 12 years old. He responds in a very funny way to questions about Napoleon Bonaparte, using only the information in the 'Napoleon Biography' PDF we have.
+      }
+      @if(assistant_id() == 'asst_L0n8MIqjkbPJpgvqpEKUt1Hw'){
+        This is an old sage, speaking in a clear and solemn manner, to help the user understand the importance of U.S. presidential history for humanity. He uses only the information available in the PDFs we have.
+      }
+      @if(assistant_id() == 'asst_l5hYAePrPlv2IenUeAcH9tWE'){
+        This is Teacher Maggie, who reflects on and analyzes the challenges that Lisa has encountered throughout the story.<br>
+        The story of Lisa is a fantasy tale that tells the story of a girl who progresses through various challenges.
+      }
+    </div>
+
+
+
+
 
     <div class="bg-green-200 fixed bottom-0 w-[260px] text-center">
       @if(authService.currentUserSig() == null) {
-        <div (click)="changeViewRegisterOrLogin()" class="cursor-pointer p-2 font-semibold bg-violet-300">
-          Login or Register
-        </div>
+      <div (click)="changeViewRegisterOrLogin()" class="cursor-pointer p-2 font-semibold bg-violet-300">
+        Login or Register
+      </div>
+      <div>
+        @if(this.showRegisterOrLogin) {
         <div>
-          @if(this.showRegisterOrLogin) {
-            <div>
-              <app-login></app-login>
-            </div>
-          }
-          @if(!this.showRegisterOrLogin) {
-            <div>
-              <app-register></app-register>
-            </div>
-          }
+          <app-login></app-login>
         </div>
+        }
+        @if(!this.showRegisterOrLogin) {
+        <div>
+          <app-register></app-register>
+        </div>
+        }
+      </div>
       }
 
       @if(authService.currentUserSig()) {
-        <div>
-          <app-logout></app-logout>
-        </div>
+      <div>
+        <app-logout></app-logout>
+      </div>
       }
 
 

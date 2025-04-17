@@ -22,7 +22,11 @@ export class HeaderComponent {
 
   authService = inject(AuthService);
 
-  showRegisterOrLogin: boolean = false
+  showRegisterOrLogin: boolean = false;
+
+
+  assistant_id = this.assistSelector.assistant_id;
+
 
 
   setAssistant(assistId: string) {

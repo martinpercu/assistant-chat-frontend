@@ -83,25 +83,17 @@
           </div>
         </div> -->
 
-        <!-- <div class=" bg-red-400"> -->
-        <div class="flex flex-row p-4 gap-4 w-full sm:w-9/12 max-w-96 sm:max-w-none md:w-8/12 lg:w-7/12 2xl:w-1/2 m-auto bg-gray-50 dark:bg-neutral-700 rounded-md shadow-md mb-4 border">
+        <div class="flex flex-row p-4 mt-4 gap-4 w-full sm:w-9/12 max-w-96 sm:max-w-none md:w-8/12 lg:w-7/12 2xl:w-1/2 m-auto bg-gray-50 dark:bg-neutral-700 rounded-md shadow-md mb-4 border">
           <textarea #chatInput [(ngModel)]="userMessage"
             class="grow py-3 px-3 ring-0 bg-transparent resize-none overflow-hidden focus:outline-none focus:ring-0 focus:border-none appearance-none"
-            rows="1" placeholder="Type a message..." (input)="adjustHeight(chatInput)" (keydown.enter)="sendMessage()">
+            rows="1" placeholder="Type a message..." (input)="adjustHeight(chatInput)" (keydown.enter)="sendMessage_with_NO_partialText()">
           </textarea>
           <!-- <input class="grow py-3 px-5 ring-0 bg-transparent" type="text" [(ngModel)]="userMessage"
               placeholder="Type a message..." (keyup.enter)="sendMessage()"> -->
-          <div class="py-3 px-6 bg-black dark:bg-white text-white dark:text-black font-bold rounded-full" (click)="sendMessage_assistant_stream_last_last()">
+          <div class="py-3 px-6 bg-black dark:bg-white text-white dark:text-black font-bold rounded-full" (click)="sendMessage_with_partialText()">
             Send
           </div>
         </div>
-        <!-- </div> -->
-
-        <!-- @if(loadingResponse) {
-        <div class="loading-response">
-          <p>Speaking shshsh...</p>
-        </div>
-        } -->
 
       </div>
 
