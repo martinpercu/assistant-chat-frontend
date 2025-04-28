@@ -8,12 +8,11 @@ import { LogoutComponent } from '@components/logout/logout.component';
 
 import { AuthService } from '@services/auth.service';
 
-import {ButtonThemeComponent } from '@components/button-theme/button-theme.component'
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RegisterComponent, LoginComponent, LogoutComponent, ButtonThemeComponent],
+  imports: [RegisterComponent, LoginComponent, LogoutComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
@@ -24,10 +23,7 @@ export class HeaderComponent {
 
   showRegisterOrLogin: boolean = false;
 
-
   assistant_id = this.assistSelector.assistant_id;
-
-
 
   setAssistant(assistId: string) {
     console.log('in header assisID  ', assistId);
