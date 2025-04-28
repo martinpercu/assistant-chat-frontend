@@ -12,19 +12,19 @@
     </div>
     }
 
-    <div class="flex h-full w-full flex-col focus-visible:outline-0 min-h-14">
+    <div class="flex h-full w-full flex-col focus-visible:outline-0 min-h-14 pt-2">
 
       <div class="w-full flex flex-row h-16">
-        <div (click)="toggleShowHeader()" class="md:hidden z-30">
-          IZQ
+        <div (click)="toggleShowHeader()" class="md:hidden z-30 cursor-pointer">
+          <app-top-left></app-top-left>
         </div>
         <div class="grow">
           <div class="flex flex-grow place-content-center">
             <app-dropdowntitle></app-dropdowntitle>
           </div>
         </div>
-        <div class="md:hidden">
-          DER
+        <div class="">
+          <app-top-right></app-top-right>
         </div>
       </div>
 
