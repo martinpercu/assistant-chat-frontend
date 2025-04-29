@@ -1,5 +1,7 @@
 import { Component, signal, inject, ViewChild, ElementRef, AfterViewChecked, Renderer2 } from '@angular/core';
 
+import { MatIconModule } from '@angular/material/icon';
+
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -20,7 +22,7 @@ import { AssistantselectorService } from '@services/assistantselector.service';
 @Component({
   selector: 'app-assistant-chat',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule, HeaderComponent, DropdowntitleComponent, TopRightComponent, TopLeftComponent],
+  imports: [CommonModule, FormsModule, HttpClientModule, HeaderComponent, DropdowntitleComponent, TopRightComponent, TopLeftComponent, MatIconModule],
   templateUrl: './assistant-chat.component.html',
   styleUrl: './assistant-chat.component.css'
 })
@@ -276,7 +278,7 @@ export class AssistantChatComponent {
 
       // Send streaming request
       this.http
-        .post("http://localhost:3000/chat_a_stream_id", formData, {
+        .post("https://fastapi-chat-5ewd.onrender.com/chat_a_stream_id", formData, {
           responseType: 'text',       // La respuesta es texto
           observe: 'events',          // Se observan los eventos de la respuesta
           reportProgress: true,       // Se permite el seguimiento del progreso
