@@ -30,7 +30,7 @@ export class AuthService {
       email,
       password,
     ).then((response) => {
-      // updateProfile(response.user, { displayName: username })
+      updateProfile(response.user, { displayName: username })
       this.addRegisterUsed(email, username, response.user.uid)
     }
     );
@@ -43,7 +43,8 @@ export class AuthService {
       username: username,
       userUID: userUid
     }
-    this.userService.addUserWithId(this.user, userUid)
+    this.userService.addUserWithId(this.user, userUid);
+    this.userService.setUserSig(this.user);
   }
 
   login(email: string, password: string) {
@@ -51,11 +52,15 @@ export class AuthService {
       this.firebaseAuth,
       email,
       password
-    ).then(() => {});
+    ).then(() => {
+
+    });
+
     return from(promise)
   }
 
   logout(): Observable<void> {
+    this.userService.setUserSigNull();
     const promise = signOut(this.firebaseAuth);
     return from(promise)
   }

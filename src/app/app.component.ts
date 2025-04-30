@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { AuthService } from '@services/auth.service';
+import { UserService } from '@services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ export class AppComponent implements OnInit {
   title = 'Assistant 4 All';
 
   authService = inject(AuthService);
+  userService = inject(UserService);
   // isDarkMode = false;
 
   ngOnInit(): void {
@@ -23,6 +25,11 @@ export class AppComponent implements OnInit {
           email: user.email!,
           username: user.displayName!
         });
+        // this.userService.userSig.set({
+        //   email: user.email!,
+        //   username: user.displayName!,
+        //   userUID: user.uid!
+        // });
       } else {
         this.authService.currentUserSig.set(null);
       }
