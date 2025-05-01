@@ -278,7 +278,8 @@ export class AssistantChatComponent {
 
       // Send streaming request
       this.http
-        .post("https://fastapi-chat-5ewd.onrender.com/chat_a_stream_id", formData, {
+        .post("http://localhost:3000/chat_a_stream_id", formData, {
+        // .post("https://fastapi-chat-5ewd.onrender.com/chat_a_stream_id", formData, {
           responseType: 'text',       // La respuesta es texto
           observe: 'events',          // Se observan los eventos de la respuesta
           reportProgress: true,       // Se permite el seguimiento del progreso

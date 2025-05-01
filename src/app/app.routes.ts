@@ -9,7 +9,10 @@ import { RegisterComponent } from '@components/register/register.component';
 import { LogoutComponent } from '@components/logout/logout.component';
 import { ModalRegisterLoginComponent } from '@components/modal-register-login/modal-register-login.component';
 
-import { DocsComponent } from '@pages/docs/docs.component'
+import { DocsComponent } from '@pages/docs/docs.component';
+
+import { ChatoComponent } from '@components/chato/chato.component';
+
 
 export const routes: Routes = [
   {
@@ -47,5 +50,9 @@ export const routes: Routes = [
   {
     path:'modal',
     component: ModalRegisterLoginComponent
-  }
+  },
+  {
+    path:'chato',
+    component: ChatoComponent
+  },
 ];
