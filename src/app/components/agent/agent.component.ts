@@ -14,6 +14,8 @@ import { HeaderComponent } from '@components/header/header.component';
 import { DropdowntitleComponent } from '@components/dropdowntitle/dropdowntitle.component';
 import { TopRightComponent } from '@components/top-right/top-right.component';
 import { TopLeftComponent } from '@components/top-left/top-left.component';
+import { MessageWaitingComponent } from '@components/message-waiting/message-waiting.component';
+import { ModalInfoComponent } from '@components/modal-info/modal-info.component';
 
 // import { ChangeDetectorRef } from '@angular/core';
 
@@ -24,7 +26,7 @@ import { AuthService } from '@services/auth.service';
 @Component({
   selector: 'app-agent',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule, HeaderComponent, DropdowntitleComponent, TopRightComponent, TopLeftComponent, MatIconModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, HeaderComponent, DropdowntitleComponent, TopRightComponent, TopLeftComponent, MatIconModule, MessageWaitingComponent, ModalInfoComponent],
   templateUrl: './agent.component.html',
   styleUrl: './agent.component.css'
 })
@@ -60,6 +62,10 @@ export class AgentComponent {
   // assistant_description = this.assistSelector.assistant_description();
 
   // userAuthEmail = this.authService.currentUserSig()?.email
+
+
+  showStayTune: boolean = true;
+
 
   combinedUserEmailAndAssistant = computed(() => {
     const currentUser = this.authService.currentUserSig();
@@ -211,8 +217,10 @@ export class AgentComponent {
     textarea.style.height = 'auto'; // Reinicia la altura para reducir si es necesario
   }
 
-
-
+  fromTopRight(data: any) {
+    console.log(data + ' this is staytuned status');
+    this.showStayTune = data
+  };
 
   // // Este parece que controla mejor pero al final manda todo de golpe.
   //   sendMessage_stream() {
