@@ -57,7 +57,7 @@ export class ChatoComponent {
     this.response = '';
 
     try {
-      const response = await fetch('http://localhost:3000/stream_chato', {
+      const response = await fetch('http://localhost:3000/stream_chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

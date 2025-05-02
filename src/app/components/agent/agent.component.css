@@ -1,0 +1,65 @@
+/* .assistant-message {
+  background-color: #f5f5f5;
+  align-self: flex-start;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.user-message {
+  background-color: #e2e8f0;
+  align-self: flex-end;
+  border-bottom-right-radius: 0.25rem;
+  color: #1f2937;
+}
+
+.dark .assistant-message {
+  background-color: #4b5563;
+  color: #e5e7eb;
+}
+
+.dark .user-message {
+  background-color: #374151;
+  color: #e5e7eb;
+} */
+
+
+/* Me hinche las bolas */
+
+.assistant-message {
+  background-color: transparent;
+  align-self: flex-start;
+  max-width: 80%;
+}
+
+/*
+@media (prefers-color-scheme: dark) {
+  .assistant-message {
+    background: #753;
+    color: white;
+  }
+} */
+
+/* .user-message {
+  background-color: green;
+} */
+
+
+.arrow-show {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out 0.2s; /* 1 segundo para la animación, con un retraso de 1 segundo */
+  opacity: 1;
+}
+
+.arrow-not-show {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out 0.2s; /* 1 segundo para la animación, con un retraso de 1 segundo */
+}
+
+
+.loading-response {
+  padding: 20px;
+  text-align: center;
+}
+
+textarea {
+  transition: height 0.1s ease-in-out;
+}
