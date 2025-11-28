@@ -27,11 +27,16 @@ export class TopRightComponent {
   showRegisterOrLogin = signal<boolean | undefined>(undefined);
 
   switchShowList() {
-    this.showlist = !this.showlist
+    this.showlist = !this.showlist;
+    this.showRegisterOrLogin.set(undefined)
   }
 
   goToLink(url: string) {
     window.open(url, "_blank");
+  };
+
+  pdfNotAcces() {
+    alert('Your mobile device cannot load the files. Please use a desktop device to access the documents')
   }
 
   changeTheme() {

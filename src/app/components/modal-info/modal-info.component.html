@@ -5,7 +5,7 @@
     class="m-auto max-w-[90%]  sm:max-w-screen-sm md:max-w-screen-md py-4 px-1 sm:p-10 bg-gray-100 border border-gray-200 rounded-2xl shadow">
 
     <div class="flex flex-col items-center text-center text-xs sm:text-sm">
-      <div class="mb-1 sm:mb-4 px-4 text-base sm:text-xl font-medium text-brand">How this works</div>
+      <div class="mb-1 sm:mb-4 px-4 text-base sm:text-xl font-medium text-brand">How it works</div>
       <!-- <div class="text-sm text-gray-500">STAY TUNED!</div> -->
 
       <div class="pt-4 w-11/12">
@@ -13,7 +13,7 @@
         select an agent from the menu on the left:
       </div>
 
-      <div class="py-6 px-4 sm:p-8 text-left gap-3 flex flex-col">
+      <div class="pb-8 pt-6 px-4 sm:p-8 text-left gap-3 flex flex-col">
         <div>🤴 Napoleon's Funny Professor – Only answers questions related to the French leader.
         </div>
         <div>📜 The Presidential Sage – Only answers questions related to the U.S. presidential history.
@@ -23,7 +23,7 @@
       </div>
 
       <div class="pb-6 w-11/12">
-        <div class="pb-2">
+        <div class="pb-2 font-semibold">
           🔍 A Shared Knowledge Base, But Specialized Agents
         </div>
         <div class="text-left text-xs">
@@ -34,8 +34,8 @@
       </div>
 
       <div class="pb-6 w-11/12">
-        <div class="pb-2">
-          💾 Independent Chat Memory
+        <div class="pb-2 font-semibold">
+          💾 Independent Chat Memory (if login)
         </div>
         <div class="text-left text-xs">
           Each agent keeps its own chat history, remembering only what you share with them. For example, you could tell one agent your name is Peter and another that it's Mary, and each will remember it only in their own conversation.
@@ -44,9 +44,12 @@
 
 
       <div (click)="closeModal()" class="flex flex-col gap-2 py-4 sm:pt-10">
-        <div (click)="closeModal()" class="cursor-pointer">
-          🚀 Close, Choose Your Expert & Start Chatting!
+        <div (click)="closeModal()" class="text-sm font-semibold bg-gray-200 rounded-md p-4">
+          🚀 Choose Your Expert & Start Chatting!
         </div>
+        <!-- <div (click)="closeModal()" class="hidden sm:flex cursor-pointer font-semibold bg-gray-200 rounded-md p-4">
+          🚀 Close, Choose Your Expert & Start Chatting!
+        </div> -->
         <!-- <div (click)="closeModal()" class="cursor-pointer">
           CLOSE
         </div> -->
