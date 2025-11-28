@@ -1,27 +1,105 @@
-# Virtualassistant
+# Virtual Assistant
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.1.
+A modern AI-powered chat application built with Angular 17 that integrates multiple specialized AI assistants using OpenAI's Assistant API, Firebase authentication, and real-time streaming responses.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Multi-Assistant Chat**: Interact with specialized AI assistants (Napoleon, President, Lisa)
+- **Real-time Streaming**: Server-Sent Events (SSE) for live response streaming
+- **Firebase Authentication**: Secure email/password authentication
+- **Thread Management**: Persistent conversation sessions across assistants
+- **Dark/Light Theme**: Toggle between themes with preference persistence
+- **Responsive UI**: Built with TailwindCSS and Angular Material
 
-## Code scaffolding
+## Tech Stack
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Frontend**: Angular 17 (Standalone Components), TypeScript 5.2
+- **State Management**: Angular Signals
+- **Styling**: TailwindCSS 3.4, Angular Material 17.3
+- **Backend Integration**: Node.js/FastAPI streaming endpoints
+- **Database**: Firebase Firestore
+- **Authentication**: Firebase Auth
 
-## Build
+## Project Structure
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+src/app/
+├── components/       # UI components (chat, modals, navigation)
+├── pages/           # Route-mapped pages (assistants, admin, docs)
+├── services/        # Business logic (auth, theme, assistant selection)
+├── models/          # TypeScript interfaces
+└── environments/    # Firebase configuration
+```
 
-## Running unit tests
+## Getting Started
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Prerequisites
 
-## Running end-to-end tests
+- Node.js (v18+)
+- Angular CLI 17+
+- Firebase account
+- Backend API running (see backend endpoints in code)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Installation
 
-## Further help
+```bash
+# Install dependencies
+npm install
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# Start development server
+ng serve
+```
+
+Navigate to `http://localhost:4200`
+
+### Build
+
+```bash
+# Production build
+ng build
+
+# Output directory: dist/
+```
+
+## Configuration
+
+Configure Firebase credentials in [src/environments/environment.ts](src/environments/environment.ts):
+
+```typescript
+export const environment = {
+  production: false,
+  firebase: {
+    projectId: 'your-project-id',
+    // ... other Firebase config
+  }
+};
+```
+
+## Key Components
+
+- **AgentComponent**: Main chat interface with streaming support
+- **HeaderComponent**: Navigation and assistant selection
+- **AuthService**: Firebase authentication management
+- **AssistantselectorService**: Dynamic assistant configuration
+
+## Backend Endpoints
+
+The app connects to streaming chat endpoints:
+- Local: `http://localhost:3000/chat_a_stream_id`
+- Production: Railway/Render hosted APIs
+
+Each assistant has a unique OpenAI Assistant ID for specialized behavior.
+
+## Development
+
+```bash
+# Run tests
+ng test
+
+# Code scaffolding
+ng generate component component-name
+```
+
+## License
+
+This project is private and proprietary.

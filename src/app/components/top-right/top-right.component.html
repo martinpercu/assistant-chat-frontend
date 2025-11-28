@@ -16,17 +16,26 @@
           <div class="flex flex-row p-2 grow cursor-pointer rounded-lg hover:bg-gray-200 dark:hover:bg-neutral-600"
             (click)="showModalInfo()">
             <mat-icon fontIcon="info" class=""></mat-icon>
-            <div class="pl-2">How this works</div>
+            <div class="pl-2">How it works</div>
           </div>
         </div>
 
-        <div class="flex flex-row px-2 py-1 mt-1">
+
+        <div class="sm:hidden flex flex-row px-2 py-1 mt-1">
+          <div class="flex flex-row p-2 grow cursor-pointer rounded-lg hover:bg-gray-200 dark:hover:bg-neutral-600"
+            (click)="pdfNotAcces()">
+            <mat-icon fontIcon="picture_as_pdf" class=""></mat-icon>
+            <div class="pl-2">See Docs</div>
+          </div>
+        </div>
+        <div class="hidden sm:flex flex-row px-2 py-1 mt-1">
           <div class="flex flex-row p-2 grow cursor-pointer rounded-lg hover:bg-gray-200 dark:hover:bg-neutral-600"
             (click)="goToLink('https://super-assistants.web.app/docs')">
             <mat-icon fontIcon="picture_as_pdf" class=""></mat-icon>
             <div class="pl-2">See Docs</div>
           </div>
         </div>
+
         <!-- <div class="flex flex-row px-2 py-1">
           <div class="flex flex-row p-2 grow cursor-pointer rounded-lg hover:bg-gray-200 dark:hover:bg-neutral-600">
             <mat-icon fontIcon="settings" class=""></mat-icon>
